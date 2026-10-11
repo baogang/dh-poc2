@@ -1,0 +1,22 @@
+{
+  "compose_validation_exit": 0,
+  "image": "sha256:d9e28e167839067c40b98ce405693e2121454417df3405c1bf70f7cb95f55e34",
+  "container_started": true,
+  "health": {
+    "status": "ok",
+    "mode": "demo_business"
+  },
+  "website_served": true,
+  "client_session_isolation": true,
+  "websocket_admission": {
+    "attempted": 30,
+    "accepted": 20,
+    "capacity_rejected": 10,
+    "models_called": 0
+  },
+  "after_disconnect_metrics": {
+    "sessions": 0,
+    "limit": 20,
+    "events": {}
+  }
+}

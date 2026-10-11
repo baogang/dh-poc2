@@ -1,0 +1,63 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>语音服务验证</title><style>body{font:16px system-ui;margin:40px auto;max-width:720px;padding:0 20px;background:#f5f5f5;color:#2d3142}button,input{font:inherit;padding:10px;margin:6px}#log{white-space:pre-wrap;line-height:1.7;unicode-bidi:plaintext}small{display:block;color:#4f5d75}</style>
+<h1>语音服务验证</h1><p>点击开始后，允许使用麦克风。说话会打断当前播报。</p>
+<label>访问凭据 <input id="token" type="password" autocomplete="off"></label><small>仅用于此验证环境，不保存凭据。请使用耳机进行首次测试。</small>
+<button id="start">开始</button><button id="commit" disabled>发送当前语音</button><button id="stop" disabled>结束</button><button id="human" disabled>转人工</button>
+<small>若说完后没有回复，可点“发送当前语音”重试，或转人工。</small>
+<p id="status" role="status">未连接</p><div id="log" dir="auto"></div>
+<script>
+let active=null;
+const $=id=>document.getElementById(id);
+const current=s=>active===s&&!s.closed;
+function clearAudio(s){for(const source of s.sources){try{source.stop()}catch{}}s.sources.clear();s.next=s.ctx?.currentTime||0;s.header=null;}
+function finish(s){
+ if(!s||s.closed)return;
+ s.closed=true;s.ready=false;clearInterval(s.timer);clearAudio(s);
+ s.stream?.getTracks().forEach(t=>t.stop());s.capture?.disconnect();
+ if(s.ctx&&s.ctx.state!=='closed')s.ctx.close().catch(()=>{});
+ if(s.ws?.readyState<2)s.ws.close();
+ if(active===s){active=null;$('start').disabled=false;$('commit').disabled=true;$('stop').disabled=true;$('human').disabled=true;$('status').textContent='已结束';}
+}
+function requireCurrent(s){if(!current(s))throw Error('连接已取消');}
+$('start').onclick=async()=>{
+ if(active)return;
+ const s={closed:false,ready:false,epoch:0,header:null,next:0,sources:new Set()};active=s;
+ try{
+  $('start').disabled=true;$('stop').disabled=false;$('status').textContent='正在连接';
+  let token=$('token').value;if(!token)throw Error('请输入访问凭据');$('token').value='';
+  s.ctx=new AudioContext({sampleRate:16000});await s.ctx.resume();requireCurrent(s);
+  if(s.ctx.sampleRate!==16000)throw Error('浏览器不支持本验证所需的采样率');
+  s.stream=await navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
+  if(!current(s)){s.stream.getTracks().forEach(t=>t.stop());return;}
+  await s.ctx.audioWorklet.addModule('/worklet.js');requireCurrent(s);
+  s.capture=new AudioWorkletNode(s.ctx,'capture');s.ctx.createMediaStreamSource(s.stream).connect(s.capture);
+  const mute=s.ctx.createGain();mute.gain.value=0;s.capture.connect(mute).connect(s.ctx.destination);
+  s.ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host+'/ws/website');s.ws.binaryType='arraybuffer';
+  s.ws.onopen=()=>{if(!current(s))return;s.ws.send(JSON.stringify({type:'auth',token}));token='';s.timer=setInterval(()=>{if(current(s)&&s.ws.readyState===1)s.ws.send(JSON.stringify({type:'ping'}));},15000);};
+  s.capture.port.onmessage=e=>{if(current(s)&&s.ready&&s.ws.readyState===1&&s.ws.bufferedAmount<32000)s.ws.send(e.data);};
+  s.ws.onmessage=e=>{
+   if(!current(s))return;
+   if(typeof e.data==='string'){
+    const d=JSON.parse(e.data);
+    if(d.type==='stop'){s.epoch=d.epoch;clearAudio(s);}
+    if(d.type==='audio'){s.header=d;return;}
+    if(d.type==='ready'){s.ready=true;s.epoch=d.epoch;$('status').textContent='已连接，请说话';$('commit').disabled=false;$('human').disabled=false;}
+    if(d.text)$('log').textContent+='\n'+d.text;
+    if(d.type==='error')$('status').textContent='服务暂不可用：'+d.reason;
+    if(d.type==='handoff'){s.ready=false;clearAudio(s);$('commit').disabled=true;$('human').disabled=true;$('status').textContent='已请求转人工；验证环境需由客服平台承接。';}
+    return;
+   }
+   if(!s.header||s.header.epoch!==s.epoch)return;
+   const a=new Int16Array(e.data),b=s.ctx.createBuffer(1,a.length,16000);for(let i=0;i<a.length;i++)b.getChannelData(0)[i]=a[i]/32768;
+   if(s.next-s.ctx.currentTime>.5){s.ws.send(JSON.stringify({type:'stop'}));clearAudio(s);$('status').textContent='网络播放积压，已停止播报';return;}
+   const source=s.ctx.createBufferSource();source.buffer=b;source.connect(s.ctx.destination);s.sources.add(source);s.next=Math.max(s.next,s.ctx.currentTime+.02);source.start(s.next);s.next+=b.duration;
+   source.onended=()=>{s.sources.delete(source);if(current(s)&&s.ready&&!s.sources.size&&s.ws.readyState===1)s.ws.send(JSON.stringify({type:'playback_done'}));};s.header=null;
+  };
+  s.ws.onclose=()=>finish(s);
+  s.ws.onerror=()=>{if(current(s)){finish(s);$('status').textContent='连接失败';}};
+ }catch(e){if(current(s)){finish(s);$('status').textContent=e.message;}else finish(s);}
+};
+$('stop').onclick=()=>finish(active);
+$('commit').onclick=()=>{if(active?.ready)active.ws.send(JSON.stringify({type:'commit'}));};
+$('human').onclick=()=>{if(active?.ready)active.ws.send(JSON.stringify({type:'handoff'}));};
+</script></html>

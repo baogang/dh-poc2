@@ -1,0 +1,10 @@
+.git
+.env
+.venv
+data
+audio
+models
+runtime
+artifacts/raw
+__pycache__
+.pytest_cache

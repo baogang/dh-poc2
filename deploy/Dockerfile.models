@@ -1,0 +1,12 @@
+FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
+ARG WORKER=asr
+WORKDIR /app
+RUN apt-get update && apt-get install -y --no-install-recommends libsndfile1 ffmpeg git && rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir fastapi==0.143.0 uvicorn==0.54.0 soundfile==0.14.0 python-multipart==0.0.32
+# Separate images prevent Qwen's transformer pin from colliding with the TTS stack.
+COPY deploy/model-constraints.txt /app/model-constraints.txt
+RUN if [ "$WORKER" = asr ]; then pip install --no-cache-dir -c /app/model-constraints.txt 'git+https://github.com/QwenLM/Qwen3-ASR.git@7c6daf77a2421100f5fb066495372c00129d39ff'; else pip install --no-cache-dir -c /app/model-constraints.txt 'git+https://github.com/OpenBMB/VoxCPM.git@cce58a5b59303c9bd63d12f23afe6a49a4a80c59'; fi
+COPY deploy/model_worker.py .
+ENV WORKER=${WORKER} HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+EXPOSE 8000
+CMD ["uvicorn", "model_worker:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1", "--limit-concurrency", "4"]

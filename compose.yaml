@@ -1,0 +1,58 @@
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.gateway
+    env_file: .env
+    ports: ["127.0.0.1:8080:8080"]
+    volumes: ["journal:/app/runtime"]
+    depends_on:
+      asr: {condition: service_healthy}
+      tts: {condition: service_healthy}
+    networks: [speech]
+  asr:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.models
+      args: {WORKER: asr}
+    environment:
+      MODEL_API_KEY: ${MODEL_API_KEY:?Generate model service secret}
+      WORKER: asr
+      MODEL_DIR: /models
+    volumes: ["./models/qwen-asr:/models:ro"]
+    gpus:
+      - driver: nvidia
+        device_ids: ["0"]
+        capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 30
+      start_period: 120s
+    networks: [speech]
+  tts:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.models
+      args: {WORKER: tts}
+    environment:
+      MODEL_API_KEY: ${MODEL_API_KEY:?Generate model service secret}
+      WORKER: tts
+      MODEL_DIR: /models
+    volumes: ["./models/voxcpm2:/models:ro"]
+    gpus:
+      - driver: nvidia
+        device_ids: ["1"]
+        capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 30
+      start_period: 120s
+    networks: [speech]
+networks:
+  speech: {internal: true}
+volumes:
+  journal:

@@ -1,0 +1,800 @@
+{
+  "asr": [
+    {
+      "model": "nvidia/nemotron-3.5-asr-streaming-multilingual-0.6b",
+      "condition": "clean",
+      "successful": 20,
+      "attempted": 20,
+      "failed": 0,
+      "wer": {
+        "units": 252,
+        "errors": 143,
+        "rate": 0.5674603174603174
+      },
+      "cer": {
+        "units": 1003,
+        "errors": 263,
+        "rate": 0.2622133599202393
+      },
+      "strict_wer": {
+        "units": 252,
+        "errors": 164,
+        "rate": 0.6507936507936508
+      },
+      "latency_seconds": {
+        "p50": 1.6123444705153815,
+        "p95": 2.7873234027763836
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-asr-streaming-multilingual-0.6b",
+      "condition": "pcmu",
+      "successful": 20,
+      "attempted": 20,
+      "failed": 0,
+      "wer": {
+        "units": 252,
+        "errors": 173,
+        "rate": 0.6865079365079365
+      },
+      "cer": {
+        "units": 1003,
+        "errors": 417,
+        "rate": 0.41575274177467597
+      },
+      "strict_wer": {
+        "units": 252,
+        "errors": 188,
+        "rate": 0.746031746031746
+      },
+      "latency_seconds": {
+        "p50": 1.4117590815294534,
+        "p95": 2.1141326061624595
+      }
+    },
+    {
+      "model": "qwen/qwen3-asr-0.6b",
+      "condition": "clean",
+      "successful": 20,
+      "attempted": 20,
+      "failed": 0,
+      "wer": {
+        "units": 252,
+        "errors": 144,
+        "rate": 0.5714285714285714
+      },
+      "cer": {
+        "units": 1003,
+        "errors": 284,
+        "rate": 0.2831505483549352
+      },
+      "strict_wer": {
+        "units": 252,
+        "errors": 165,
+        "rate": 0.6547619047619048
+      },
+      "latency_seconds": {
+        "p50": 0.8271062159910798,
+        "p95": 1.3748891502618794
+      }
+    },
+    {
+      "model": "qwen/qwen3-asr-0.6b",
+      "condition": "pcmu",
+      "successful": 20,
+      "attempted": 20,
+      "failed": 0,
+      "wer": {
+        "units": 252,
+        "errors": 176,
+        "rate": 0.6984126984126984
+      },
+      "cer": {
+        "units": 1003,
+        "errors": 377,
+        "rate": 0.37587238285144564
+      },
+      "strict_wer": {
+        "units": 252,
+        "errors": 189,
+        "rate": 0.75
+      },
+      "latency_seconds": {
+        "p50": 1.0155661479802802,
+        "p95": 1.7238050316169398
+      }
+    },
+    {
+      "model": "qwen/qwen3-asr-1.7b",
+      "condition": "clean",
+      "successful": 20,
+      "attempted": 20,
+      "failed": 0,
+      "wer": {
+        "units": 252,
+        "errors": 104,
+        "rate": 0.4126984126984127
+      },
+      "cer": {
+        "units": 1003,
+        "errors": 195,
+        "rate": 0.19441674975074777
+      },
+      "strict_wer": {
+        "units": 252,
+        "errors": 128,
+        "rate": 0.5079365079365079
+      },
+      "latency_seconds": {
+        "p50": 3.845994981529657,
+        "p95": 9.109346466069109
+      }
+    },
+    {
+      "model": "qwen/qwen3-asr-1.7b",
+      "condition": "pcmu",
+      "successful": 20,
+      "attempted": 20,
+      "failed": 0,
+      "wer": {
+        "units": 252,
+        "errors": 129,
+        "rate": 0.5119047619047619
+      },
+      "cer": {
+        "units": 1003,
+        "errors": 279,
+        "rate": 0.2781655034895314
+      },
+      "strict_wer": {
+        "units": 252,
+        "errors": 147,
+        "rate": 0.5833333333333334
+      },
+      "latency_seconds": {
+        "p50": 4.166842554521281,
+        "p95": 8.269227470242187
+      }
+    }
+  ],
+  "samples": [
+    {
+      "id": "6k_SBA_113_0-seg_254_890-258_010",
+      "source": "batch_1/6k_SBA_113_0.wav",
+      "split": "test",
+      "dialect": "Najdi",
+      "duration": 3.12,
+      "sha256": {
+        "clean": "3c6aaa92157d37a3344dd001192427b3e54d1f8314f7e16444a2ceb2b84699c4",
+        "pcmu": "6e3face0d7f2ccf12bf845a88975934a98b7930e8f583d36877cd01d81c1cd4f"
+      }
+    },
+    {
+      "id": "6k_SBA_113_0-seg_268_500-272_470",
+      "source": "batch_1/6k_SBA_113_0.wav",
+      "split": "test",
+      "dialect": "Najdi",
+      "duration": 3.97,
+      "sha256": {
+        "clean": "1ad4ef91fc986afbe898de56f0d77418b7b14fff7d30b4418083ebb31e15ee3a",
+        "pcmu": "99936bf39c82889ded66ca8269179b37fe6de19ff37ac74a6db6ad2e19c64f92"
+      }
+    },
+    {
+      "id": "6k_SBA_113_0-seg_404_260-413_630",
+      "source": "batch_1/6k_SBA_113_0.wav",
+      "split": "test",
+      "dialect": "Najdi",
+      "duration": 9.37,
+      "sha256": {
+        "clean": "533be5809055ff5168cb78759bc460d13a97e6b9367cfd51c844bf17ecb2ea25",
+        "pcmu": "e24d2d3df5b800365d1cf4e707af48ef2042c044b165586cf293431838260bdb"
+      }
+    },
+    {
+      "id": "6k_SBA_116_0-seg_148_390-152_150",
+      "source": "batch_1/6k_SBA_116_0.wav",
+      "split": "test",
+      "dialect": "Hijazi",
+      "duration": 3.76,
+      "sha256": {
+        "clean": "24e97761f618f6a9a35945eeacf2ab13578b03113451aeeb43dae78f22324f23",
+        "pcmu": "7e46d58a1c0991d20bd138c4189dd50e5999d31ce35e79d978e988c42e9d3417"
+      }
+    },
+    {
+      "id": "6k_SBA_116_0-seg_156_410-159_980",
+      "source": "batch_1/6k_SBA_116_0.wav",
+      "split": "test",
+      "dialect": "Hijazi",
+      "duration": 3.57,
+      "sha256": {
+        "clean": "7be5f1a1a725bef58bac666b585b5ce8b8b4aeb27c63139d066effc20817b92a",
+        "pcmu": "f9f3393a1df6bc8f8e81f12baa36d1d5b2f3951e04a6992418ec1e888f6b1749"
+      }
+    },
+    {
+      "id": "6k_SBA_116_0-seg_230_950-235_380",
+      "source": "batch_1/6k_SBA_116_0.wav",
+      "split": "test",
+      "dialect": "Hijazi",
+      "duration": 4.43,
+      "sha256": {
+        "clean": "f7eb7788d2807763d7b3bfb8136b0ae09159cb72118da4d482e5f649fd3a55fb",
+        "pcmu": "86c211c825e4925bce88ab32197394ed8a61fbd4d218d69bc4bace6059b76505"
+      }
+    },
+    {
+      "id": "6k_SBA_116_0-seg_236_220-239_930",
+      "source": "batch_1/6k_SBA_116_0.wav",
+      "split": "test",
+      "dialect": "Hijazi",
+      "duration": 3.71,
+      "sha256": {
+        "clean": "8c95f1ffb5d73303662de7b4d6b2e29e93e45bfe63298be7ed67acf903e0f216",
+        "pcmu": "2c845d8c6209fdb7ef4adf5bb836620baac793ca2782b38991236c258f935099"
+      }
+    },
+    {
+      "id": "6k_SBA_116_0-seg_288_350-292_100",
+      "source": "batch_1/6k_SBA_116_0.wav",
+      "split": "test",
+      "dialect": "Hijazi",
+      "duration": 3.75,
+      "sha256": {
+        "clean": "2da70b95818b9932865f989a55ea1b6a5a83f5f9b16b95b7aeadd4cfd0ba180a",
+        "pcmu": "9eb8ce7194e4eda2b238199304b47440b3d783451e7fb7a5535febea4ce9eed1"
+      }
+    },
+    {
+      "id": "6k_SBA_116_0-seg_305_090-310_820",
+      "source": "batch_1/6k_SBA_116_0.wav",
+      "split": "test",
+      "dialect": "Hijazi",
+      "duration": 5.73,
+      "sha256": {
+        "clean": "8eb266dcb2fe6c1d90ca1c47cf1e4efdc773d3f63d99698e1335d49138136338",
+        "pcmu": "1d2d598f0ff8428b77cd5f7260e78325de937f13050f981c252153f23f8bdb0c"
+      }
+    },
+    {
+      "id": "6k_SBA_107_0-seg_3_990-14_890",
+      "source": "batch_1/6k_SBA_107_0.wav",
+      "split": "test",
+      "dialect": "Khaliji",
+      "duration": 10.9,
+      "sha256": {
+        "clean": "ffd17c8deb74aafdfd4dc5a356d77cc5c981d96888594bd9c806d84baccb9bac",
+        "pcmu": "76b7d40f5f05838a945a89c7749583cf671a9b5ff36ad8b1c231a90dc78f61f2"
+      }
+    },
+    {
+      "id": "6k_SBA_107_0-seg_167_480-171_150",
+      "source": "batch_1/6k_SBA_107_0.wav",
+      "split": "test",
+      "dialect": "Khaliji",
+      "duration": 3.67,
+      "sha256": {
+        "clean": "9c4b3600b02b6d4c5642622b697793e4d000b8c0eaac527d7da51638b55ab1f2",
+        "pcmu": "d4d27ace02beee61b9cdae22a649cc3af66b65e5f3466a93fdacd51b9469ec1b"
+      }
+    },
+    {
+      "id": "6k_SBA_107_0-seg_171_800-179_950",
+      "source": "batch_1/6k_SBA_107_0.wav",
+      "split": "test",
+      "dialect": "Khaliji",
+      "duration": 8.15,
+      "sha256": {
+        "clean": "4c65ab1f2df2ae0ca65b061e757eedd900eab5b5ba79dddd01cbd1a0c0b67c96",
+        "pcmu": "cee21a457bc981a6c844ada4d2a752ab81cf880fcd19f0a0e310d56cdbcd060a"
+      }
+    },
+    {
+      "id": "6k_SBA_107_0-seg_265_240-270_830",
+      "source": "batch_1/6k_SBA_107_0.wav",
+      "split": "test",
+      "dialect": "Khaliji",
+      "duration": 5.59,
+      "sha256": {
+        "clean": "4f60b05fdd9b40e0fc82f528febefe9a3e4514599cb3ec9f40d65e503d471d80",
+        "pcmu": "0e49d96068586102d8b004179b60ba52ceb46d563289aeeb85b835662f20c1f2"
+      }
+    },
+    {
+      "id": "6k_SBA_107_0-seg_314_250-318_920",
+      "source": "batch_1/6k_SBA_107_0.wav",
+      "split": "test",
+      "dialect": "Khaliji",
+      "duration": 4.67,
+      "sha256": {
+        "clean": "774c781bd1e06c4a73f97b7810d7b1044b87f72d5c2ee5c1163973f74a9f3df6",
+        "pcmu": "09ff19f7f45e7f72d18b8bd46ea3f6f6bafd7fc0b303982f7b6c86c5bd63f30c"
+      }
+    },
+    {
+      "id": "6k_SBA_107_0-seg_324_070-332_320",
+      "source": "batch_1/6k_SBA_107_0.wav",
+      "split": "test",
+      "dialect": "Khaliji",
+      "duration": 8.25,
+      "sha256": {
+        "clean": "caccdfb8b538f21b4af4de1afb932c632780a45eba4778ec69fec58d9900bd62",
+        "pcmu": "cc3de50014b4f1ce3dd26176f3c00333c151971768c12db69e9f2aca1a262c6e"
+      }
+    },
+    {
+      "id": "6k_SBA_113_0-seg_461_490-464_530",
+      "source": "batch_1/6k_SBA_113_0.wav",
+      "split": "test",
+      "dialect": "ModernStandardArabic",
+      "duration": 3.04,
+      "sha256": {
+        "clean": "7f35e5c19217d70f0bb054ac3267e8cfa500ede6d36e7c970a7eedf7c9512213",
+        "pcmu": "6f4533bb0014c20e1c2fee601db1e724be1bd2e5c480c900ed2213b2b84118ce"
+      }
+    },
+    {
+      "id": "6k_SBA_113_0-seg_465_630-477_550",
+      "source": "batch_1/6k_SBA_113_0.wav",
+      "split": "test",
+      "dialect": "ModernStandardArabic",
+      "duration": 11.92,
+      "sha256": {
+        "clean": "4154397271d4f4667da78f9a48f3164d259c1438288e8304aece1d1bf2ff5db7",
+        "pcmu": "398918b520950f2677b42daf648bb01ffa0b87fcfa1e3da13f76991cdfcf276d"
+      }
+    },
+    {
+      "id": "6k_SBA_113_0-seg_530_980-535_270",
+      "source": "batch_1/6k_SBA_113_0.wav",
+      "split": "test",
+      "dialect": "ModernStandardArabic",
+      "duration": 4.29,
+      "sha256": {
+        "clean": "df42de64d995633515cd3b18749c3c2d9b86c10370a57566f136b72c0f381fb1",
+        "pcmu": "496c0377f14a444c2d0eca779ae2a81a2ad1687f051f368aa63459e71b3e7c9a"
+      }
+    },
+    {
+      "id": "6k_SBA_113_0-seg_561_890-566_590",
+      "source": "batch_1/6k_SBA_113_0.wav",
+      "split": "test",
+      "dialect": "ModernStandardArabic",
+      "duration": 4.7,
+      "sha256": {
+        "clean": "eed79316f9b897c1b3d494adcce10fee6cf03ebe1042a1fe94d7cfe29338a61d",
+        "pcmu": "bbd8e696fe3d924e4d8f93dada771b269f4ad3693413f98ec4ef5a11280d78eb"
+      }
+    },
+    {
+      "id": "6k_SBA_113_0-seg_572_990-580_440",
+      "source": "batch_1/6k_SBA_113_0.wav",
+      "split": "test",
+      "dialect": "ModernStandardArabic",
+      "duration": 7.45,
+      "sha256": {
+        "clean": "2062c2147dc13bcc04f1ca3f161b4fc55a1a86a5706a0228f585b495c7594040",
+        "pcmu": "c86fc2e8094608b2c7fe41cc3ae6f2ffe56dba8404558bd3540a2cb1bfe0a06b"
+      }
+    }
+  ],
+  "tts": [
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_basic",
+      "input": "تم استلام طلبك. يرجى الاحتفاظ برقم الطلب.",
+      "backend_revision": "not_exposed",
+      "demo_revision": "5b015bfaa16e8a6a35bb1eefb093787c7e3f0352",
+      "status": "success",
+      "duration": 4.032,
+      "sample_rate": 48000,
+      "sha256": "95f9cb7f3bce4f73ef901a426734aba8cf267cf6aa21a7e1321d27d045aecc3f",
+      "elapsed_seconds": 3.848340488038957,
+      "rtf_full_response": 0.9544495258033128
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_digits",
+      "input": "رقم الطلب 1047. الموعد في 15 أكتوبر.",
+      "backend_revision": "not_exposed",
+      "demo_revision": "5b015bfaa16e8a6a35bb1eefb093787c7e3f0352",
+      "status": "success",
+      "duration": 5.952,
+      "sample_rate": 48000,
+      "sha256": "8dd40f5bf94dbac5f4f32087cc4798c962c970a7ac17572562d380d64b0e1c1a",
+      "elapsed_seconds": 3.449437798000872,
+      "rtf_full_response": 0.5795426407931573
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_spoken_digits",
+      "input": "رقم الطلب هو واحد صفر أربعة سبعة. موعدك يوم الخامس عشر من أكتوبر.",
+      "backend_revision": "not_exposed",
+      "demo_revision": "5b015bfaa16e8a6a35bb1eefb093787c7e3f0352",
+      "status": "success",
+      "duration": 4.344,
+      "sample_rate": 48000,
+      "sha256": "f6750509bf7cf3f9374458b371d8ba5ef7c141c72cf83db9ecb7deaaa012ffe8",
+      "elapsed_seconds": 3.280667335027829,
+      "rtf_full_response": 0.7552180789658905
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_mixed",
+      "input": "يمكنك متابعة الطلب باستخدام رقم Reference ID في الموقع.",
+      "backend_revision": "not_exposed",
+      "demo_revision": "5b015bfaa16e8a6a35bb1eefb093787c7e3f0352",
+      "status": "success",
+      "duration": 4.824,
+      "sample_rate": 48000,
+      "sha256": "5ef78bbea1c69ffae378163772e4c0ef439846e77345ec90cee448119c2cb705",
+      "elapsed_seconds": 3.1628875309834257,
+      "rtf_full_response": 0.6556566191922525
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_handoff",
+      "input": "سأحولك الآن إلى موظف خدمة العملاء. يرجى الانتظار.",
+      "backend_revision": "not_exposed",
+      "demo_revision": "5b015bfaa16e8a6a35bb1eefb093787c7e3f0352",
+      "status": "success",
+      "duration": 4.344,
+      "sample_rate": 48000,
+      "sha256": "600bc471c39cd2a7ba1ab1071cfbe101f4756b9ce0cc2dd17a7785a1c784bf18",
+      "elapsed_seconds": 3.07043318299111,
+      "rtf_full_response": 0.7068216351268668
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "en_basic",
+      "input": "Your request has been received. Please keep the reference number.",
+      "backend_revision": "not_exposed",
+      "demo_revision": "5b015bfaa16e8a6a35bb1eefb093787c7e3f0352",
+      "status": "success",
+      "duration": 4.344,
+      "sample_rate": 48000,
+      "sha256": "69675b5ba18ea5c69c2ae4d37dd82dc87af7d3528393b857640d91e5b6b4da6c",
+      "elapsed_seconds": 2.847039915039204,
+      "rtf_full_response": 0.6553959288764282
+    }
+  ],
+  "tts_content": [
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_basic",
+      "status": 200,
+      "duration": 4.032,
+      "hypothesis": "تم استلام طلبك. يرجى الاحتفاظ برقم الطلب.",
+      "scores": {
+        "wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 7,
+          "error_rate": 0.0
+        },
+        "cer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 33,
+          "error_rate": 0.0
+        },
+        "strict_wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 7,
+          "error_rate": 0.0
+        }
+      },
+      "elapsed_seconds": 1.9739645550725982
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_digits",
+      "status": 200,
+      "duration": 5.952,
+      "hypothesis": "رقم الطلب عشرة إراعة سبعين الموعد في خمسة عشر أكتوبر.",
+      "scores": {
+        "wer": {
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 3,
+          "reference_units": 7,
+          "error_rate": 0.7142857142857143
+        },
+        "cer": {
+          "substitutions": 6,
+          "deletions": 0,
+          "insertions": 15,
+          "reference_units": 28,
+          "error_rate": 0.75
+        },
+        "strict_wer": {
+          "substitutions": 2,
+          "deletions": 0,
+          "insertions": 3,
+          "reference_units": 7,
+          "error_rate": 0.7142857142857143
+        }
+      },
+      "elapsed_seconds": 3.7003812150796875
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_spoken_digits",
+      "status": 200,
+      "duration": 4.344,
+      "hypothesis": "رقم الطلب هو واحد صفر أربعة سبعة. موعدك يوم الخامس عشر من أكتوبر.",
+      "scores": {
+        "wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 13,
+          "error_rate": 0.0
+        },
+        "cer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 51,
+          "error_rate": 0.0
+        },
+        "strict_wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 13,
+          "error_rate": 0.0
+        }
+      },
+      "elapsed_seconds": 2.473732612095773
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_mixed",
+      "status": 200,
+      "duration": 4.824,
+      "hypothesis": "يمكنك متابعة الطلب باستخدام رقم Reference ID في الموقع.",
+      "scores": {
+        "wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 9,
+          "error_rate": 0.0
+        },
+        "cer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 46,
+          "error_rate": 0.0
+        },
+        "strict_wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 9,
+          "error_rate": 0.0
+        }
+      },
+      "elapsed_seconds": 1.719235094031319
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "ar_handoff",
+      "status": 200,
+      "duration": 4.344,
+      "hypothesis": "سأحولك الآن إلى موظف خدمة العملاء. يرجى الانتظار.",
+      "scores": {
+        "wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 8,
+          "error_rate": 0.0
+        },
+        "cer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 40,
+          "error_rate": 0.0
+        },
+        "strict_wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 8,
+          "error_rate": 0.0
+        }
+      },
+      "elapsed_seconds": 2.555223127012141
+    },
+    {
+      "model": "VoxCPM2 official Nano-vLLM demo",
+      "case": "en_basic",
+      "status": 200,
+      "duration": 4.344,
+      "hypothesis": "Your request has been received. Please keep the reference number.",
+      "scores": {
+        "wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 10,
+          "error_rate": 0.0
+        },
+        "cer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 54,
+          "error_rate": 0.0
+        },
+        "strict_wer": {
+          "substitutions": 0,
+          "deletions": 0,
+          "insertions": 0,
+          "reference_units": 10,
+          "error_rate": 0.0
+        }
+      },
+      "elapsed_seconds": 3.731228192918934
+    },
+    {
+      "model": "hexgrad/kokoro-82m",
+      "case": "en_basic",
+      "status": 200,
+      "duration": 1.95,
+      "hypothesis": "Your request has been received.",
+      "scores": {
+        "wer": {
+          "substitutions": 0,
+          "deletions": 5,
+          "insertions": 0,
+          "reference_units": 10,
+          "error_rate": 0.5
+        },
+        "cer": {
+          "substitutions": 0,
+          "deletions": 28,
+          "insertions": 0,
+          "reference_units": 54,
+          "error_rate": 0.5185185185185185
+        },
+        "strict_wer": {
+          "substitutions": 0,
+          "deletions": 5,
+          "insertions": 0,
+          "reference_units": 10,
+          "error_rate": 0.5
+        }
+      },
+      "elapsed_seconds": 2.21621836500708
+    },
+    {
+      "model": "hexgrad/kokoro-82m",
+      "case": "en_number",
+      "status": 200,
+      "duration": 2.925,
+      "hypothesis": "Your reference number is ten forty-seven.",
+      "scores": {
+        "wer": {
+          "substitutions": 3,
+          "deletions": 4,
+          "insertions": 0,
+          "reference_units": 11,
+          "error_rate": 0.6363636363636364
+        },
+        "cer": {
+          "substitutions": 7,
+          "deletions": 19,
+          "insertions": 0,
+          "reference_units": 53,
+          "error_rate": 0.49056603773584906
+        },
+        "strict_wer": {
+          "substitutions": 2,
+          "deletions": 5,
+          "insertions": 0,
+          "reference_units": 11,
+          "error_rate": 0.6363636363636364
+        }
+      },
+      "elapsed_seconds": 1.7128680360037833
+    }
+  ],
+  "real_pipeline": [
+    {
+      "id": "6k_SBA_113_0-seg_254_890-258_010",
+      "vad_utterances": 0,
+      "manual_submit_fallback": true,
+      "events": [
+        "stop",
+        "transcript",
+        "reply",
+        "done"
+      ],
+      "output_frames": 122,
+      "first_output_seconds_from_fast_injection_start": 5.0811036069644615,
+      "pipeline_completed": true,
+      "business": "demo contract double"
+    },
+    {
+      "id": "6k_SBA_113_0-seg_268_500-272_470",
+      "vad_utterances": 1,
+      "manual_submit_fallback": false,
+      "events": [
+        "stop",
+        "stop",
+        "transcript",
+        "reply",
+        "done"
+      ],
+      "output_frames": 122,
+      "first_output_seconds_from_fast_injection_start": 6.24275227508042,
+      "pipeline_completed": true,
+      "business": "demo contract double"
+    },
+    {
+      "id": "6k_SBA_113_0-seg_404_260-413_630",
+      "vad_utterances": 1,
+      "manual_submit_fallback": false,
+      "events": [
+        "stop",
+        "stop",
+        "transcript",
+        "reply",
+        "done"
+      ],
+      "output_frames": 178,
+      "first_output_seconds_from_fast_injection_start": 6.318814164027572,
+      "pipeline_completed": true,
+      "business": "demo contract double"
+    }
+  ],
+  "gateway_deployment": {
+    "compose_validation_exit": 0,
+    "image": "sha256:d9e28e167839067c40b98ce405693e2121454417df3405c1bf70f7cb95f55e34",
+    "container_started": true,
+    "health": {
+      "status": "ok",
+      "mode": "demo_business"
+    },
+    "website_served": true,
+    "client_session_isolation": true,
+    "websocket_admission": {
+      "attempted": 30,
+      "accepted": 20,
+      "capacity_rejected": 10,
+      "models_called": 0
+    },
+    "after_disconnect_metrics": {
+      "sessions": 0,
+      "limit": 20,
+      "events": {}
+    }
+  },
+  "budget": {
+    "cap": 5,
+    "committed": 1.5034749087000008,
+    "actual": 0.0034749086999999994,
+    "unknown": 19
+  },
+  "openrouter_speech_attempts": 147,
+  "availability": {
+    "asr": true,
+    "voxcpm2": true,
+    "tts-content": true,
+    "tts": true,
+    "tts-retry": true,
+    "real-pipeline": true,
+    "cost": true,
+    "deployment": true
+  }
+}
